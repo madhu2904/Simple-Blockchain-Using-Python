@@ -1,4 +1,4 @@
-#A very basic blockchain built using python programmming language 
+## A very basic blockchain built using python programmming language 
 
 libraries/modules used 
 1.) hashlib
