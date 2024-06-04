@@ -1,6 +1,7 @@
 import hashlib
 import time
 
+#creating a structure for the block
 class Block:
     def __init__(self, index, previous_hash, timestamp, data, hash):
         self.index = index
@@ -11,15 +12,17 @@ class Block:
 
     def __repr__(self):
         return f"Block(index={self.index}, previous_hash={self.previous_hash}, timestamp={self.timestamp}, data={self.data}, hash={self.hash})"
-
+#The initial block dosen't have previous_hash value ,hence a function is created for the first block passing previous_hash value as "0"
 def create_genesis_block():
     timestamp = time.time()
     return Block(0, "0", timestamp, "Genesis Block", calculate_hash("0", timestamp, "Genesis Block"))
-
+    
+#A function to calculate hash value of a block
 def calculate_hash(previous_hash, timestamp, data):
     value = str(previous_hash) + str(timestamp) + str(data)
     return hashlib.sha256(value.encode()).hexdigest()
 
+#Creating template of blockchain.
 class Blockchain:
     def __init__(self):
         self.chain = [create_genesis_block()]
